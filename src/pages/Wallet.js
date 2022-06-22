@@ -1,9 +1,21 @@
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-class Wallet extends React.Component {
+export class Wallet extends Component {
   render() {
-    return <div>Página da carteira porra</div>;
+    return (
+      <section>Wallet</section>
+    );
   }
 }
 
-export default Wallet;
+const mapStateToProps = (state) => ({
+  state,
+});
+
+Wallet.propTypes = {
+  dispatch: PropTypes.func,
+}.isRequired;
+
+export default connect(mapStateToProps)(Wallet);
