@@ -1,11 +1,15 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Header from '../components/Header';
 
 export class Wallet extends Component {
   render() {
     return (
-      <section>Wallet</section>
+      <section>
+        <Header />
+        Wallet
+      </section>
     );
   }
 }
