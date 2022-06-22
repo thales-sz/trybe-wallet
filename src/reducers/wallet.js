@@ -15,7 +15,9 @@ const wallet = (state = INITIAL_STATE, action) => {
       console.log(state.expenses);
       return {
         ...state,
-        [action.name]: action.payload,
+        [action.name]: {
+          ...state.expenses,
+        },
       };
     }
     return {
