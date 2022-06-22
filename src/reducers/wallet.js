@@ -11,10 +11,18 @@ const INITIAL_STATE = {
 const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case WALLET_ACTION:
+    if (action.name === 'expenses') {
+      console.log(state.expenses);
+      return {
+        ...state,
+        [action.name]: action.payload,
+      };
+    }
     return {
       ...state,
       [action.name]: action.payload,
     };
+
   default:
     return state;
   }

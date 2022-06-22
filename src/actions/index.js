@@ -1,6 +1,11 @@
 // Coloque aqui suas actions
+import fetchCurrencies from '../helpers/fetchCurrencies';
+
 export const WALLET_ACTION = 'WALLET_ACTION';
 export const USER_ACTION = 'USER_ACTION';
+export const REQUEST_PRICE = 'REQUEST_PRICE';
+
+let counter = 0;
 
 export const userAction = (userData) => ({
   type: USER_ACTION,
@@ -12,3 +17,17 @@ export const walletAction = (walletData, name) => ({
   payload: walletData,
   name,
 });
+
+// export const requestPrice = () => ({
+//   type: REQUEST_PRICE,
+// });
+
+export function thunkFetchAction(data) {
+  return async (dispatch) => {
+    // dispatch(requestPrice());
+    const response = await fetchCurrencies();
+    const result = [{ id: counter, ...data, exchangeRates: response }];
+    counter += 1;
+    return dispatch(walletAction(result, 'expenses'));
+  };
+}

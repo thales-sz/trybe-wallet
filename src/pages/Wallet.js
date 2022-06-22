@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
+import Form from '../components/Form';
 import fetchCurrencies from '../helpers/fetchCurrencies';
 import { walletAction } from '../actions/index';
 
@@ -10,15 +11,14 @@ export class Wallet extends Component {
     const { dispatch } = this.props;
     const response = await fetchCurrencies();
     delete response.USDT;
-    const result = Object.keys(response);
-    dispatch(walletAction(result, 'currencies'));
+    dispatch(walletAction(Object.keys(response), 'currencies'));
   }
 
   render() {
     return (
       <section>
         <Header />
-        Wallet
+        <Form />
       </section>
     );
   }
