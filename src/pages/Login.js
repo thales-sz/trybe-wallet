@@ -1,9 +1,17 @@
-import React from 'react';
+// import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-class Login extends React.Component {
+export class Login extends Component {
   render() {
-    return <div>Login</div>;
+    return (
+      <div>Login page caralho</div>
+    );
   }
 }
 
-export default Login;
+const mapStateToProps = (state) => ({
+  state,
+});
+
+export default connect(mapStateToProps)(Login);
