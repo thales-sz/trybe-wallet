@@ -7,7 +7,8 @@ export const userAction = (userData) => ({
   payload: userData,
 });
 
-export const walletAction = (walletData) => ({
+export const walletAction = (walletData, name) => ({
   type: WALLET_ACTION,
   payload: walletData,
+  name,
 });

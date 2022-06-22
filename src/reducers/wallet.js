@@ -13,7 +13,7 @@ const wallet = (state = INITIAL_STATE, action) => {
   case WALLET_ACTION:
     return {
       ...state,
-      currencies: action.payload,
+      [action.name]: action.payload,
     };
   default:
     return state;
