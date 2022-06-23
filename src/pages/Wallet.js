@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Header } from '../components/Header';
-import { Form } from '../components/Form';
+import Header from '../components/Header';
+import Form from '../components/Form';
 import fetchCurrencies from '../helpers/fetchCurrencies';
 import { walletAction } from '../actions/index';
 
