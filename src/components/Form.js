@@ -25,6 +25,7 @@ export class Form extends Component {
     const expenseData = {
       ...this.state,
     };
+    console.log(expenseData);
     dispatch(thunkFetchAction(expenseData));
   }
 

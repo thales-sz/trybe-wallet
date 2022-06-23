@@ -26,8 +26,8 @@ export function thunkFetchAction(data) {
   return async (dispatch) => {
     // dispatch(requestPrice());
     const response = await fetchCurrencies();
-    const result = [{ id: counter, ...data, exchangeRates: response }];
+    const newExpense = { id: counter, ...data, exchangeRates: response };
     counter += 1;
-    return dispatch(walletAction(result, 'expenses'));
+    return dispatch(walletAction(newExpense, 'expenses'));
   };
 }

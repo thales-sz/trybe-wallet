@@ -12,12 +12,9 @@ const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case WALLET_ACTION:
     if (action.name === 'expenses') {
-      console.log(state.expenses);
       return {
         ...state,
-        [action.name]: {
-          ...state.expenses,
-        },
+        [action.name]: [...state.expenses, action.payload],
       };
     }
     return {
