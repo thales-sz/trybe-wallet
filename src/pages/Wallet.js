@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
 import Form from '../components/Form';
+import Table from '../components/Table';
 import fetchCurrencies from '../helpers/fetchCurrencies';
 import { walletAction } from '../actions/index';
 
@@ -19,6 +20,7 @@ class Wallet extends Component {
       <section>
         <Header />
         <Form />
+        <Table />
       </section>
     );
   }
