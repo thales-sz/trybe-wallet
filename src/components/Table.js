@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { BiTrashAlt } from 'react-icons/bi';
+import { FiEdit } from 'react-icons/fi';
+import { deleteExpenseAction } from '../actions';
 
 class Table extends Component {
+  clickButtonEdit = () => {
+
+  }
+
+  clickButtonDelete = ({ target }) => {
+    const { dispatch, globalState: { wallet: { expenses } } } = this.props;
+    const newState = expenses.filter((expen) => Number(expen.id) !== Number(target.id));
+    dispatch(deleteExpenseAction(newState));
+  }
+
   render() {
     const { globalState: { wallet: { expenses } } } = this.props;
     return (
@@ -28,7 +41,7 @@ class Table extends Component {
             const exchangeValue = Number(exchangeRates[currency].ask);
             const convertedValue = Number(value) * exchangeValue;
             return (
-              <tr key={ id }>
+              <tr key={ id } id={ id }>
                 <td>{description}</td>
                 <td>{tag}</td>
                 <td>{method}</td>
@@ -46,7 +59,24 @@ class Table extends Component {
                     { maximumFractionDigits: 2, minimumFractionDigits: 2 })}
                 </td>
                 <td>Real</td>
-                <td>Editar/Excluir</td>
+                <td>
+                  <button
+                    type="button"
+                    data-testid="edit-btn"
+                    id={ id }
+                    onClick={ this.clickButtonEdit }
+                  >
+                    <FiEdit id={ id } />
+                  </button>
+                  <button
+                    type="button"
+                    data-testid="delete-btn"
+                    id={ id }
+                    onClick={ this.clickButtonDelete }
+                  >
+                    <BiTrashAlt id={ id } />
+                  </button>
+                </td>
               </tr>
             );
           })

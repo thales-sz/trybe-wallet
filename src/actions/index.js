@@ -2,6 +2,7 @@
 import fetchCurrencies from '../helpers/fetchCurrencies';
 
 export const WALLET_ACTION = 'WALLET_ACTION';
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 export const USER_ACTION = 'USER_ACTION';
 export const REQUEST_PRICE = 'REQUEST_PRICE';
 
@@ -18,13 +19,13 @@ export const walletAction = (walletData, name) => ({
   name,
 });
 
-// export const requestPrice = () => ({
-//   type: REQUEST_PRICE,
-// });
+export const deleteExpenseAction = (expenseData) => ({
+  type: DELETE_EXPENSE,
+  payload: expenseData,
+});
 
 export function thunkFetchAction(data) {
   return async (dispatch) => {
-    // dispatch(requestPrice());
     const response = await fetchCurrencies();
     const newExpense = { id: counter, ...data, exchangeRates: response };
     counter += 1;
