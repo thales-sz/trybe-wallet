@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Wallet from './pages/Wallet';
 
-export class App extends Component {
+class App extends Component {
   render() {
     return (
       <Switch>

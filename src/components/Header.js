@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-export class Header extends Component {
+class Header extends Component {
   render() {
     const { globalState: { user } } = this.props;
     return (

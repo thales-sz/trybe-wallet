@@ -6,7 +6,7 @@ import Form from '../components/Form';
 import fetchCurrencies from '../helpers/fetchCurrencies';
 import { walletAction } from '../actions/index';
 
-export class Wallet extends Component {
+class Wallet extends Component {
   componentDidMount = async () => {
     const { dispatch } = this.props;
     const response = await fetchCurrencies();

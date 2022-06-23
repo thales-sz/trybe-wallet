@@ -11,7 +11,7 @@ const INITIAL_STATE = {
   description: '',
 };
 
-export class Form extends Component {
+class Form extends Component {
   state = {
     ...INITIAL_STATE,
   }
@@ -25,7 +25,6 @@ export class Form extends Component {
     const expenseData = {
       ...this.state,
     };
-    console.log(expenseData);
     dispatch(thunkFetchAction(expenseData));
   }
 

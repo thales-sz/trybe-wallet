@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { userAction } from '../actions';
 
 const FIVE = 5;
-export class Login extends Component {
+class Login extends Component {
   state = {
     inputEmail: '',
     inputPassword: '',
