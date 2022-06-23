@@ -26,6 +26,7 @@ class Form extends Component {
       ...this.state,
     };
     dispatch(thunkFetchAction(expenseData));
+    this.setState({ ...INITIAL_STATE });
   }
 
   render() {
@@ -53,7 +54,6 @@ class Form extends Component {
             value={ currency }
             id="currency"
           >
-            <option value="" disabled hidden>Moeda:</option>
             {wallet.currencies.map((moeda) => (
               <option value={ moeda } key={ moeda }>{moeda}</option>
             ))}
@@ -68,9 +68,8 @@ class Form extends Component {
             data-testid="method-input"
             id="method"
           >
-            <option value="" disabled hidden>Método:</option>
+            <option value="Cartão de crédito">Cartão de crédito</option>
             <option value="Dinheiro">Dinheiro</option>
-            <option value="Lazer">Cartão de crédito</option>
             <option value="Cartão de débito">Cartão de débito</option>
           </select>
         </label>
@@ -83,7 +82,6 @@ class Form extends Component {
             data-testid="tag-input"
             id="tag"
           >
-            <option value="" disabled hidden>Tag:</option>
             <option value="Alimentação">Alimentação</option>
             <option value="Lazer">Lazer</option>
             <option value="Trabalho">Trabalho</option>
