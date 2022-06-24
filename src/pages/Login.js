@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { CgEnter } from 'react-icons/cg';
 import { userAction } from '../actions';
+import './Login.css';
 
 const FIVE = 5;
 class Login extends Component {
@@ -9,6 +11,10 @@ class Login extends Component {
     inputEmail: '',
     inputPassword: '',
     disabledBtn: true,
+  }
+
+  eyePasswordCLick = () => {
+
   }
 
   handleChange = ({ target: { value, name } }) => {
@@ -39,31 +45,44 @@ class Login extends Component {
     const { inputEmail, inputPassword, disabledBtn } = this.state;
     return (
       <section>
-        Email:
-        <input
-          type="email"
-          data-testid="email-input"
-          name="inputEmail"
-          value={ inputEmail }
-          onChange={ this.handleChange }
-          placeholder="Enter your email"
-        />
-        Senha:
-        <input
-          type="password"
-          data-testid="password-input"
-          name="inputPassword"
-          value={ inputPassword }
-          onChange={ this.handleChange }
-          placeholder="Enter your password"
-        />
-        <button
-          type="button"
-          onClick={ this.clickButton }
-          disabled={ disabledBtn }
-        >
-          Entrar
-        </button>
+        <form className="form-login">
+          <div className="img-container">
+            <span id="title-red">
+              My
+              <span id="title-green">Wallet</span>
+            </span>
+            <img src="https://icons.iconarchive.com/icons/flat-icons.com/flat/512/Wallet-icon.png" alt="Icone do header" width="150px" />
+          </div>
+          <input
+            id="inputEmail"
+            type="email"
+            data-testid="email-input"
+            name="inputEmail"
+            value={ inputEmail }
+            onChange={ this.handleChange }
+            placeholder="Email"
+          />
+          <input
+            id="inputPassword"
+            type="password"
+            data-testid="password-input"
+            name="inputPassword"
+            value={ inputPassword }
+            onChange={ this.handleChange }
+            placeholder="Senha"
+          />
+          <button
+            type="button"
+            id="button-login"
+            onClick={ this.clickButton }
+            disabled={ disabledBtn }
+          >
+            Entrar
+            {' '}
+            <CgEnter />
+          </button>
+          <a href="https://www.linkedin.com/in/thales-souza-chagas-23b651175/" target="_blank" rel="noopener noreferrer">Desenvolvido por Thales Chagas</a>
+        </form>
       </section>
     );
   }
