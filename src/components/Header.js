@@ -3,12 +3,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 const INITIAL_VALUE = 0;
-const TEN = 10;
+const ONE_HUNDRED = 100;
 
 class Header extends Component {
-  removeDecimal(number) {
-    const aux = (TEN ** 2);
-    return Math.floor(number * aux) / aux;
+  twoDecimalPlaces(number) {
+    return Math.floor(number * ONE_HUNDRED) / ONE_HUNDRED;
   }
 
   render() {
@@ -16,9 +15,8 @@ class Header extends Component {
     const totalValue = expenses.reduce((accExp, currExp) => {
       const { exchangeRates, currency, value } = currExp;
       const total = (Number(value) * Number(exchangeRates[currency].ask));
-      const finalTotal = this.removeDecimal(total);
       return (
-        accExp + Number(finalTotal)
+        accExp + this.twoDecimalPlaces(total)
       );
     }, INITIAL_VALUE);
     return (
