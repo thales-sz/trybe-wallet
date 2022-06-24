@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BiTrashAlt } from 'react-icons/bi';
 import { FiEdit } from 'react-icons/fi';
-import { deleteExpenseAction } from '../actions';
+import { deleteExpenseAction, editExpenseAction } from '../actions';
 
 class Table extends Component {
-  clickButtonEdit = () => {
-
+  clickButtonEdit = ({ target: { id } }) => {
+    const { dispatch, globalState: { wallet: { expenses } } } = this.props;
+    const editedExpense = expenses.find((expen) => Number(expen.id) === Number(id));
+    dispatch(editExpenseAction(editedExpense));
   }
 
   clickButtonDelete = ({ target }) => {

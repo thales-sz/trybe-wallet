@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { thunkFetchAction } from '../actions';
+import { thunkFetchAction, editedExpenseAction } from '../actions';
 
 const INITIAL_STATE = {
   value: '',
@@ -29,9 +29,24 @@ class Form extends Component {
     this.setState({ ...INITIAL_STATE });
   }
 
+  clickButtonEdit = () => {
+    const { dispatch, globalState: { wallet: { expenses, expenseToEdit } } } = this.props;
+    const editedExpense = {
+      ...this.state,
+      id: expenseToEdit.id,
+      exchangeRates: expenseToEdit.exchangeRates,
+    };
+    const index = expenses.indexOf(expenseToEdit);
+    console.log(index);
+    expenses[index] = editedExpense;
+    dispatch(editedExpenseAction(expenses));
+    this.setState({ ...INITIAL_STATE });
+  }
+
   render() {
     const { value, currency, method, tag, description } = this.state;
     const { globalState: { wallet } } = this.props;
+    const { editor } = wallet;
     return (
       <section>
         <label htmlFor="value">
@@ -101,7 +116,12 @@ class Form extends Component {
             placeholder="Breve descrição"
           />
         </label>
-        <button type="button" onClick={ this.clickButton }>Adicionar despesas</button>
+        <button
+          type="button"
+          onClick={ editor ? this.clickButtonEdit : this.clickButton }
+        >
+          {editor ? 'Editar despesas' : 'Adicionar despesas' }
+        </button>
       </section>
     );
   }
