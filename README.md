@@ -17,7 +17,6 @@ cd src/
 npm install
 ```
 
-  ```
 * Para rodar o front-end:
 
   ```
