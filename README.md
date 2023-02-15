@@ -30,3 +30,6 @@ npm install
   ```
     npm test
   ```
+## Para visualizar o funcionamento da aplicação acesse:
+
+https://trybewallet-navy.vercel.app/
